@@ -85,7 +85,125 @@ O1.8 - Modelo de Responsabilidades:
 > | Plataforma | Segurança, Networking, Observabilidade |
 > | Operações | Cluster, Upgrades, DR |
 
+O1.9 - Visão Geral da Arquitetura
+ > - Um cluster OpenShift é organizado em planos funcionais, com separação de responsabilidades:
+ >   - Control Plane;
+ >   - Data Plane;
+ >   - Infra Plane;
+ >   - Management Plane. 
 
+O1.1O - Control Plane 
+ > - Cérebro do Cluster. 
+ > - Componentes Principais:
+ >   - kube-apiserver
+ >     - Ponto central de comunicação do Cluster;
+ >     - Toda operação passa por ele (CLI, console, operadores);
+ >     - Expõe a API Kubernetes;
+ >     - Aplica autenticação, autorização (RBAC) e admission control. 
+ >
+ >   - etcd 
+ >     - Banco de dados distribuído (key-value);
+ >     - Extremamente sensível a latência e I/O. 
+ >     - Armazena:
+ >       - Estado desejado;
+ >       - Configurações;
+ >       - Segredos (Criptografados).
+ > 
+ >   - kube-scheduler
+ >     - Decide em qual node um Pod será executado; 
+ >     - Considera: 
+ >       - Recursos Disponíveis;
+ >       - Afinidade / anti-afinidade;
+ >       - Taints e Tolerations;
+ >       - Policies do Cluster. 
+ >
+ >   - kube-controller-manager
+ >     - Garante que o estado atual convirja para o estado desejado. 
+ >     - Controla:
+ >       - Replicas;
+ >       - Nodes;
+ >       - Endpoints;
+ >       - Jobs. 
+
+O1.11 - Worker Nodes (Data Plane)
+ > - Workers são responsáveis por executar workloads. 
+ > - Componentes Principais:
+ >   - kubelet
+ >     - Agente do Kubernetes no Node; 
+ >     - Garante que os Pods definidos rodem corretamente; 
+ >     - Reporta status ao API Server. 
+ >
+ >   - CRI-O 
+ >     - Runtime de containers do OpenShift;
+ >     - Implementa o padrão OCI;
+ >     - Mais enxuto e seguro que Docker. 
+ >
+ >   - kube-proxy / OVN
+ >     - Gerencia regras de rede;
+ >     - Comunicação enter Pods e Services. 
+ >
+ > - Responsabilidades dos Workers:
+ >   - Execução de Pods;
+ >   - Montagem de Volumes;
+ >   - Coleta de Métricas;
+ >   - Aplicação de Políticas de Rede. 
+
+O1.12 - Infra Nodes (Camada de Plataforma)
+ > - OpenShift permite Nós Dedicados para serviços de Infraestrutura:
+ >   - Router (Ingress Controller);
+ >   - Registry Interno; 
+ >   - Monitoring (Prometheus, Alertmanager);
+ >   - Logging (EFK / Loki).
+
+O1.13 - Networking na Arquitetura 
+ > - Networking é a parte central da arquitetura OpenShift:
+ > - Características:
+ >   - Rede flat (Todo Pod fala com todo Pod);
+ >   - IP único por Pod;
+ >   - DNS interno Nativo. 
+ >
+ > - Componentes:
+ >   - OVN-Kubernetes (Padrão Atual);
+ >   - Ingress Controllers;
+ >   - Routes (Exposição HTTP / HTTPS). 
+ >
+ > - Fluxo: 
+ >   - Usuário -> Route -> Router -> Service - Pod
+
+O1.14 - Operadores e Automação
+ > - OpenShift é gerenciado por Operators;
+ > - Tipos:
+ >   - Cluster Operators: Mantêm o Próprio Cluster;
+ >   - Aplication Operators: Bancos de Dados, Middleware, etc. 
+ >
+ > - Funções:
+ >   - Instalação;
+ >   - Configuração;
+ >   - Atualização;
+ >   - Recuperação Automática. 
+ >
+ > - O cluster se auto-corrige via operadores. 
+
+O1.15 - Cluster Version Operator (CVO)
+ > - Componente Crítico da Arquitetura OpenShift 4.x:
+ >   - Controla versões do Cluster;
+ >   - Garante Upgrades Coordenados;
+ >   - Atualiza Operadores de Forma Segura.  
+ >
+ > - Diferenciais:
+ >   - Upgrades Declarativos;
+ >   - Sem scripts manuais e complexos. 
+
+O1.16 - Domínios de Falha (Failure Domains)
+ > - Conceito Arquitetural Importante:
+ >   - Node failure;
+ >   - Zone Failure;
+ >   - Control Plane Failure. 
+ >
+ > - OpenShift permite:
+ >   - Spread de Pods;
+ >   - Afinidade entre Zonas;
+ >   - Tolerância a Falhas Planejada.     
 
 </details>
 </div>
