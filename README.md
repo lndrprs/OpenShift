@@ -69,6 +69,23 @@ O1.6 - Projects vs Namespaces
  >   - Limites de Recursos;
  >   - RBAC;
  >   - Isolamento de Rede. 
+ > - Projetos facilitam a governança multi-time. 
+
+O1.7 - Componentes-Chave Introduzidos pelo OpenShift 
+ > - ImageStreams: Controle lógico de imagens;
+ > - BuildConfigs: Pipelines de Build;
+ > - Routes: Exposição HTTP / HTTPS;
+ > - Operators: Automação de Serviços Complexos;
+ > - Cluster Operators: Gestão do Próprio Cluster. 
+
+O1.8 - Modelo de Responsabilidades:
+> | Setor | Responsabilidade |
+> |-------|------------------|
+> | Desenvolvedor | Código, Imagens, Deploy |
+> | Plataforma | Segurança, Networking, Observabilidade |
+> | Operações | Cluster, Upgrades, DR |
+
+
 
 </details>
 </div>
