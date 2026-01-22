@@ -204,6 +204,34 @@ O1.16 - Domínios de Falha (Failure Domains)
  >   - Spread de Pods;
  >   - Afinidade entre Zonas;
  >   - Tolerância a Falhas Planejada.     
+ 
+O1.17 - Conceito de Objeto no OpenShift 
+ > - Objeto é uma entidade declarativa armazenada no eetcd que descreve:
+ >   - Estado Desejado;
+ >   - Configuração;
+ >   - Relacionamentos. 
+ >
+ > - Você declara o que quer -> O sistema tenta manter isso verdadeiro. 
+
+O1.18 - Pod 
+ > - Menor unidade implantável no OpenShift;
+ > - Pode conter:
+ >   - Um contêiner;
+ >   - Múltiplos Contêineres fortemente acoplados. 
+ >
+ > - Características:
+ >   - Compartilham:
+ >     - IP;
+ >     - Portas;
+ >     - Volumes. 
+ >   - Vida curta e descartável;
+ >   - Não deve ser gerenciado diretamente em produção. 
+
+01.19 - ReplicaSet 
+ > - Garante que N réplicas de um Pod existam;
+ > - Substitui Pods mortos automaticamente;
+ > - Não faz rollout controlado;
+ > - Geralmente não é manipulado diretamente. 
 
 </details>
 </div>
