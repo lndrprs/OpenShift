@@ -70,6 +70,8 @@ O1.6 - Projects vs Namespaces
  >   - RBAC;
  >   - Isolamento de Rede. 
  > - Projetos facilitam a governança multi-time. 
+ > 
+ > - Namespace é o Isolamento Lógico no Kubernetes.
 
 O1.7 - Componentes-Chave Introduzidos pelo OpenShift 
  > - ImageStreams: Controle lógico de imagens;
@@ -227,11 +229,78 @@ O1.18 - Pod
  >   - Vida curta e descartável;
  >   - Não deve ser gerenciado diretamente em produção. 
 
-01.19 - ReplicaSet 
+O1.19 - ReplicaSet 
  > - Garante que N réplicas de um Pod existam;
  > - Substitui Pods mortos automaticamente;
  > - Não faz rollout controlado;
  > - Geralmente não é manipulado diretamente. 
+
+O1.20 - Deployment 
+ > - Camada acima do ReplicaSet;
+ > - Gerenciamento de:
+ >   - Versões;
+ >   - Atualizações;
+ >   - Rollbacks. 
+ >
+ > - Estratégias:
+ >   - Rolling Update;
+ >   - Recreate. 
+ >
+ > - Deployment -> ReplicatSet -> Pods 
+ > - Deployment é a intenção de execução da aplicação. 
+ >
+ > - DeploymentConfig 
+ >   - Permite gatilhos automáticos:
+ >     - Image Change;
+ >     - Config Change. 
+ >   - Estratégias Blue-Green e Canary. 
+
+O1.21 - Service 
+ > - Fornece ENdpoint estável; 
+ > - Abstrai IPs voláteis dos Pods.
+ > - Tipos:
+ >   - ClusterIP (Interno);
+ >   - NodePort;
+ >   - LoadBalancer. 
+
+O1.22 - Route (Exposição Externa)
+ > - Enquanto Kubernetes usa Ingress, Openshift usa Route;
+ > - Expõe serviços HTTP /HTTPS;
+ > - Terminação TLS;
+ > - Políticas de Tráfego. 
+ >
+ > - Cliente -> Route -> Router -> Service -> Pod
+
+O1.23 - ConfigMap  
+ > - Variáveis de Ambiente;
+ > - Arquivos de Configuração;
+ > - Parâmetros Externos ao Container. 
+ >
+ > - Separação entre código e configuração. 
+
+O1.24 - Secret 
+ > - Armazena Senhas, Tokens e Certificados; 
+ > - Codificados em Base64;
+ > - Podem ser montados como volume, ou injetados como variáveis de ambiente;
+ > - Possui controle via RBAC e criptografia em etcd. 
+
+O1.25 - Labels e Selectos 
+ > - Labels 
+ >   - Metadados Chave-Valor;
+ >   - Base de Seleção, Organização, Automação.
+ >
+ > - Selectors
+ >   - Usados por Services, Deployments e NetworkPolicies
+
+O1.26 - Volumes e Persistência
+ > - Volumes
+ >   - Acoplados ao Pod;
+ >   - Definem onde os dados ficam. 
+ >
+ > - Persistência
+ >   - PV (Infra);
+ >   - PVC (Aplicação).
+ > - Externa ao clico de vida do Pod. 
 
 </details>
 </div>
