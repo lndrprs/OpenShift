@@ -302,6 +302,59 @@ O1.26 - Volumes e Persistência
  >   - PVC (Aplicação).
  > - Externa ao clico de vida do Pod. 
 
+O1.27 - Autenticação
+ > - Autenticação ocorre no kube-apiserver, por meio do subsistema OAuth do OpenShift.
+ >
+ > - Identidades e Usuários
+ >   - Identity: Vínculo com o provedor externo;
+ >   - User: Entidade interna do OpenShift;
+ >   - Um usuário pode ter múltiplas identidades. 
+ > 
+ > - Provedores de Identidade (idP)
+ >   - LDAP / Active Directory;
+ >   - OAuth (GitHub, GitLab, Google);
+ >   - OpenID Connect (OIDC);
+ >   - HTPasswd - Ambientes Simples. 
+
+O1.28 - Autorização 
+ > - Baseada em RBAC (Role-Based Access Control)
+ > - Elementos Principais:
+ >   - Role / ClusterRole: Conjunto de Permissões;
+ >   - RoleBinding / ClusterRoleBinding: Associação entre Permissão e Sujeito;
+ >   - Subjects:
+ >     - Users;
+ >     - Groups;
+ >     - ServiceAccounts. 
+
+O1.29 - ServiceAccounts 
+ > - Identidades Não Humanas;
+ > - Usadas por Pods, Pipelines e Operators.
+ >
+ > - Cada Pod executa sob uma ServiceAccount, que define seu nível de acesso à API. 
+
+O1.30 - CLI (oc) e Web Console
+ > - oc CLI
+ >   - Extensão do kubectl, com funcionalidades específicas do OpenShift; 
+ >   - Capacidades: 
+ >     - Gerenciamento de Recursos;
+ >     - Login via OAuth;
+ >     - Build e Deploy;
+ >     - Debug e Troubleshooting;
+ >     - Interação com Operadores. 
+ >   - oc faz mais coisa que o Console.
+ >
+ > - Web Console
+ >   - Interface Gráfica para Desenvolvedores, Operadores e Administradores. 
+ >   - Funcionalidades:
+ >     - Visualização de Workloads;
+ >     - Logs e Métricas;
+ >     - Topologia de Aplicações;
+ >     - Deploy Guiado;
+ >     - Gerenciamento de RBAC.
+ >   - Reduz curva de aprendizado, em relação ao CLI.
+
+ 
+
 </details>
 </div>
 
