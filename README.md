@@ -142,7 +142,7 @@ O1.11 - Worker Nodes (Data Plane)
  >
  >   - kube-proxy / OVN
  >     - Gerencia regras de rede;
- >     - Comunicação enter Pods e Services. 
+ >     - Comunicação entre Pods e Services. 
  >
  > - Responsabilidades dos Workers:
  >   - Execução de Pods;
@@ -171,6 +171,14 @@ O1.13 - Networking na Arquitetura
  >
  > - Fluxo: 
  >   - Usuário -> Route -> Router -> Service - Pod
+ > 
+ > - NetworkPolicies
+ >   - Permitem controle explícito de tráfego:
+ >     - Pod -> Pod;
+ >     - Namespace -> Namespace;
+ >     - Ingress e Egress. 
+ > - Sem policy: tudo é permitido;
+ > - Com policy: tudo é negado, exceto o permitido. 
 
 O1.14 - Operadores e Automação
  > - OpenShift é gerenciado por Operators;
@@ -298,8 +306,12 @@ O1.26 - Volumes e Persistência
  >   - Definem onde os dados ficam. 
  >
  > - Persistência
- >   - PV (Infra);
- >   - PVC (Aplicação).
+ >   - PV (Infra): PersistentVolume;
+ >     - Represeta Storage Físico ou Lógico;
+ >     - Criado pelo administrador.
+ >   - PVC (Aplicação): PersistentVolumeClaim;
+ >     - Solicitação de Storage;
+ >     - Criada pela Aplicação. 
  > - Externa ao clico de vida do Pod. 
 
 O1.27 - Autenticação
@@ -392,6 +404,15 @@ O1.35 - Health Checks
  > - Readiness Probe: Tráfego;
  > - Startup Probe: Inicialização lenta. 
  
+O1.36 - StorageClasses
+ > - Tipos de Orage;
+ > - Permitem:
+ >   - Provisionamento Dinâmico;
+ >   - Parâmetros por workload.
+ > - Exemplos:
+ >   - SSD vs HDD;
+ >   - Block vs File;
+ >   - Local vs Remote.  
 
 </details>
 </div>
