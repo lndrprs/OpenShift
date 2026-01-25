@@ -353,6 +353,44 @@ O1.30 - CLI (oc) e Web Console
  >     - Gerenciamento de RBAC.
  >   - Reduz curva de aprendizado, em relação ao CLI.
 
+O1.31 - Source-to-Image (S21)
+ > - Modelo Tradicional do OpenShift.
+ > - Processo:
+ >   - Código é Fornecido;
+ >   - Builder da Image (Java, Node, Python, etc);
+ >   - Build Automatizado;
+ >   - Imagem gerada e armazenada no registry interno. 
+
+O1.32 - BuildConfig
+ > - Objeto OpenShift Declarativo, que define:
+ >   - Fonte do código;
+ >   - Estratégia de Build;
+ >   - Triggers;
+ >   - Saída (ImageStream).
+
+O1.33 - ImageStreams 
+ > - Abstração lógica sobre Imagens;
+ > - Permite Versionamento, Controle de Rollout e Triggers Automáticos.
+ >
+ > - Build -> ImageStream -> Deployment / DeploymentConfig -> Pods
+ >
+ > - Gatilhos Comuns:
+ >   - Nova Imagem;
+ >   - Alteração de Configuração;
+ >   - Deploy Manual. 
+
+O1.34 - Estratégias de Deploy
+ > - Rolling Update;
+ > - Recreate;
+ > - Blue - Green;
+ > - Canary.
+ >
+ > A escolha impacta Disponibilidade, Risco e Tempo de Rollback
+
+O1.35 - Health Checks 
+ > - Liveness Probe: Reinício;
+ > - Readiness Probe: Tráfego;
+ > - Startup Probe: Inicialização lenta. 
  
 
 </details>
